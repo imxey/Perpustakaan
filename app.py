@@ -20,7 +20,7 @@ def login():
 def lihat_buku():
     print("Daftar buku perpustakaan:")
     for i, buku in enumerate(database_buku, 1):
-        print(f"%d. Judul: %s, Penulis: %s, Tahun: %s" %(i, buku[0], buku[1], buku[2]))
+        print("%d. Judul: %s, Penulis: %s, Tahun: %s" %(i, buku[0], buku[1], buku[2]))
     balik_menu = input("silahkan tekan enter untuk kembali ke menu awal")
     if balik_menu == "":
         menu()
@@ -34,8 +34,16 @@ def tambah_buku():
     menu()
 
 def hapus_buku():
-    print("Hapus buku")
-
+    for i, buku in enumerate(database_buku, 1):
+        print(f"%d. Judul: %s, Penulis: %s, Tahun: %s" %(i, buku[0], buku[1], buku[2]))
+    print("Silahkan masukkan nomor buku yang ingin dihapus")
+    indeks_hapus = int(input("Masukkan nomor buku yang ingin dihapus: "))
+    if 1 <= indeks_hapus <= len(database_buku):
+        buku_terhapus = database_buku.pop(indeks_hapus - 1)
+        print("Buku %s berhasil dihapus dari daftar." %(buku_terhapus))
+    else:
+        print("Nomor buku tidak valid. Coba lagi.")
+    menu()
 def peminjaman_buku():
     print("Peminjaman buku")
 
